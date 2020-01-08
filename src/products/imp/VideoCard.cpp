@@ -5,7 +5,7 @@
 #include "VideoCard.h"
 
 VideoCard::VideoCard() {
-    std::cout << "VideoCard NoArgs" <<  std::endl;
+    std::cout << "VideoCard NoArgs" << std::endl;
 }
 
 VideoCard::~VideoCard() {
@@ -24,16 +24,15 @@ std::string VideoCard::getType() const {
 char VideoCard::getCharCode() const {
     return ProductTypes::Video;
 }
+
 void VideoCard::printParams(std::ostream &ostream) const {
     Product::printParams(ostream);
-    ostream << ", " << "VideoMemory: " << memory;
-    ostream << ", " << "Hz: " << hz;
+    ostream << ", " << "VideoMemory: " << memory << ", " << "Hz: " << hz;
 }
 
 void VideoCard::loadParamsFromStream(std::istream &istream) {
     Product::loadParamsFromStream(istream);
-    istream >> memory;
-    istream >> hz;
+    istream >> memory >> hz;
 }
 
 void VideoCard::writeParamsToStream(std::ostream &ostream) const {
@@ -41,8 +40,8 @@ void VideoCard::writeParamsToStream(std::ostream &ostream) const {
     ostream << ' ' << memory << ' ' << hz;
 }
 
-VideoCard::VideoCard(int initPrice, time_t dateOfAcq, const std::string &name, int memory, int hz):
-Product(initPrice,dateOfAcq,name), memory(memory),hz(hz) {
+VideoCard::VideoCard(int initPrice, time_t dateOfAcq, const std::string &name, int memory, int hz) :
+        Product(initPrice, dateOfAcq, name), memory(memory), hz(hz) {
     std::cout << "VideoCard AllArgs" << std::endl;
 }
 
@@ -55,3 +54,41 @@ bool VideoCard::operator==(const VideoCard &rhs) const {
 bool VideoCard::operator!=(const VideoCard &rhs) const {
     return !(rhs == *this);
 }
+
+VideoCard::VideoCard(const VideoCard &other) noexcept : Product(other) {
+    std::cout << "VideoCard Ctor" << std::endl;
+    memory = other.memory;
+    hz = other.hz;
+}
+
+VideoCard &VideoCard::operator=(const VideoCard &other) noexcept {
+    std::cout << "VideoCard copy assign" << std::endl;
+    Product::operator=(other);
+    memory = other.memory;
+    hz = other.hz;
+    return *this;
+}
+
+VideoCard::VideoCard(VideoCard &&other) noexcept : Product(other) {
+    std::cout << "VideoCard movetor" << std::endl;
+    memory = other.memory;
+    hz = other.hz;
+
+    other.memory = 0;
+    other.hz = 0;
+}
+
+VideoCard &VideoCard::operator=(VideoCard &&other) noexcept {
+    std::cout << "VideoCard move assign" << std::endl;
+    Product::operator=(other);
+    memory = other.memory;
+    hz = other.hz;
+
+    other.memory = 0;
+    other.hz = 0;
+    return *this;
+}
+
+
+
+

@@ -29,12 +29,14 @@ ProductFactory::~ProductFactory() {
 }
 ProductFactory* ProductFactory::instance = nullptr;
 
-void ProductFactory::init(ProductFactory *pf) {
-
+void ProductFactory::setProductFactory(ProductFactory *pf) {
     instance = pf;
 }
 
-ProductFactory *ProductFactory::getInstance() {
+ ProductFactory *ProductFactory::getInstance() {
+    if(!instance){
+        instance = new ProductFactory();
+    }
     return instance;
 }
 

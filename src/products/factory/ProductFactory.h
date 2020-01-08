@@ -14,7 +14,7 @@ class ProductFactory {
 public:
     virtual ~ProductFactory();
     static ProductFactory * getInstance();
-    static void init(ProductFactory * pf);
+    static void setProductFactory(ProductFactory * pf);
 
     Product * readAndCreateProduct(std::istream& istream);
     virtual Product * CreateProduct(char typeCode) const ;

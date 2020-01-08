@@ -14,7 +14,7 @@
 
 
 ProductInventory::~ProductInventory() {
-    std::cout << "Destroying ProductInvertory" << std::endl;
+    std::cout << "Destroying ProductInventory" << std::endl;
     for(auto& item:products){
         delete item;
     }
@@ -69,7 +69,7 @@ int ProductInventory::getProductsPrice() const {
 }
 
 ProductInventory::ProductInventory() {
-    std::cout << "ProductInvertory NoArgs" << std::endl;
+    std::cout << "ProductInventory NoArgs" << std::endl;
 }
 
 

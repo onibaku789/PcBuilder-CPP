@@ -45,21 +45,25 @@ bool HardDisk::operator!=(const HardDisk &rhs) const {
 }
 
 HardDisk::HardDisk(const HardDisk &other)noexcept : Product(other)  {
+    std::cout << "HardDisk ctor" << std::endl;
     speedRPM = other.speedRPM;
 
 }
 
 HardDisk &HardDisk::operator=(const HardDisk &other) noexcept {
+    std::cout << "HardDisk copy assign" << std::endl;
     Product::operator= (other);
     speedRPM = other.speedRPM;
     return *this;
 }
 
 HardDisk::HardDisk(HardDisk &&other) noexcept :Product(other) {
+    std::cout << "HardDisk movetor" << std::endl;
     speedRPM = other.speedRPM;
 }
 
 HardDisk &HardDisk::operator=(HardDisk &&other) noexcept {
+    std::cout << "HardDisk move assign" << std::endl;
     Product::operator= (other);
     speedRPM = other.speedRPM;
     return *this;
@@ -69,8 +73,7 @@ HardDisk &HardDisk::operator=(HardDisk &&other) noexcept {
 HardDisk::HardDisk() {
     std::cout << "HardDisk NoArgs" << std::endl;
 }
-HardDisk::HardDisk(int initPrice, time_t dateOfAcq, const std::string &name, int speedRpm) : Product(initPrice,
-                                                                                                     dateOfAcq, name),
-                                                                                             speedRPM(speedRpm) {
+HardDisk::HardDisk(int initPrice, time_t dateOfAcq, const std::string &name, int speedRpm)
+:Product(initPrice,dateOfAcq, name),speedRPM(speedRpm) {
     std::cout << "HardDisk AllArgs" << std::endl;
 }

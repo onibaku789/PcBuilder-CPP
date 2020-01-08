@@ -6,6 +6,7 @@
 #define PCBUILDER_VIDEOCARD_H
 
 
+#include <ostream>
 #include "../Product.h"
 
 class VideoCard : public Product{
@@ -15,6 +16,14 @@ public:
     VideoCard();
 
     VideoCard(int initPrice, time_t dateOfAcq, const std::string &name, int memory, int hz);
+
+    VideoCard(const VideoCard &other) noexcept ;
+
+    VideoCard &operator=(const VideoCard &other)noexcept;
+
+    VideoCard(VideoCard &&other)noexcept;
+
+    VideoCard &operator=(VideoCard &&other)noexcept;
 
     virtual ~VideoCard();
 
@@ -27,6 +36,8 @@ public:
     bool operator==(const VideoCard &rhs) const;
 
     bool operator!=(const VideoCard &rhs) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const VideoCard &card);
 
 protected:
     void printParams(std::ostream &ostream) const override;

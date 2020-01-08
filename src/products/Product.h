@@ -57,7 +57,7 @@ public:
         std::cout << "\nProduct Copytor" << std::endl;
     }
 
-    virtual Product &operator=(const Product &other) noexcept{
+     Product &operator=(const Product &other) noexcept{
         if (this != &other) {
             initPrice = other.initPrice;
             dateOfAcq = other.dateOfAcq;
@@ -78,7 +78,7 @@ public:
         other.name = "";
     }
 
-    virtual Product &operator=(Product &&other) noexcept {
+     Product &operator=(Product &&other) noexcept {
         if (this != &other) {
 
             initPrice = other.initPrice;
@@ -93,7 +93,7 @@ public:
         return *this;
     }
 
-    friend std::ostream &operator<<(std::ostream &os, const Product &product);
+
 
 };
 

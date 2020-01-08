@@ -16,7 +16,7 @@ void writeInvToFile(ProductInventory &inventory, const std::string& fileName = "
 
 int main() {
     try {
-        ProductFactory::init(new ComputerProductFactory());
+        ProductFactory::setProductFactory(new ComputerProductFactory());
 
         time_t currentTime;
         time(&currentTime);
