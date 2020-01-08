@@ -37,7 +37,6 @@ public:
 
     bool operator!=(const VideoCard &rhs) const;
 
-    friend std::ostream &operator<<(std::ostream &os, const VideoCard &card);
 
 protected:
     void printParams(std::ostream &ostream) const override;
