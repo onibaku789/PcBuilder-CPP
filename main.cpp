@@ -56,10 +56,13 @@ int main() {
 
 
     }
-    catch (const std::exception &exception) {
-        std::cerr << "There was an error: " << std::endl;
+    catch (const std::invalid_argument &exception) {
+        std::cerr << "There was an error(invalid_argument): " << std::endl;
         std::cerr << exception.what() << std::endl;
-    } catch (...) {
+    }catch (const std::out_of_range &exception) {
+        std::cerr << "There was an error(out_of_range): " << std::endl;
+        std::cerr << exception.what() << std::endl;
+    }catch (...) {
         std::cerr << "Unexpected error occured." << std::endl;
     }
 
