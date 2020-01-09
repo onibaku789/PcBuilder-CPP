@@ -18,21 +18,22 @@ protected:
     void writeParamsToStream(std::ostream &ostream) const override;
 
 private:
-    std::vector<Product*> parts;
+    std::vector<Product *> parts;
 
 public:
     CompositeProduct();
 
-    CompositeProduct(const CompositeProduct &other) noexcept ;
+    CompositeProduct(const CompositeProduct &other) noexcept;
 
-    CompositeProduct &operator=(const CompositeProduct &other)noexcept;
+    CompositeProduct &operator=(const CompositeProduct &other) noexcept;
 
-    CompositeProduct(CompositeProduct &&other)noexcept;
+    CompositeProduct(CompositeProduct &&other) noexcept;
 
-    CompositeProduct &operator=(CompositeProduct &&other)noexcept;
+    CompositeProduct &operator=(CompositeProduct &&other) noexcept;
 
     ~CompositeProduct() override;
-void addPart(Product * product);
+
+    void addPart(Product *product);
 
     int getCurrentPrice() const override;
 

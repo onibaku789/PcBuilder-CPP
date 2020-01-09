@@ -49,7 +49,7 @@ int main() {
         //readInvFromCode(twokeighteen);
 
         //ProductInventory from file;
-        readInvFromFileTest();
+        //readInvFromFileTest();
 
         //copytor and copyassign
         //copyTest(currentTime);
@@ -60,6 +60,7 @@ int main() {
     catch (const std::invalid_argument &exception) {
         std::cerr << "There was an error(invalid_argument): " << std::endl;
         std::cerr << exception.what() << std::endl;
+
     } catch (const std::out_of_range &exception) {
         std::cerr << "There was an error(out_of_range): " << std::endl;
         std::cerr << exception.what() << std::endl;
@@ -107,7 +108,6 @@ void copyTest(time_t time1) {
     auto hdd = HardDisk(11700, time1, "Western Digital Caviar Blue 3.5 1TB 7200rpm 64MB SATA3 WD10EZEX", 7200);
     auto vga = VideoCard(94000, time1, "GIGABYTE GeForce GTX 1660 Ti OC 6GB (GV-N166TOC-6GD) ", 6, 1800);
     auto vga1 = copyProduct<VideoCard>(vga);
-
     VideoCard vga2;
     vga2 = vga1;
 }
@@ -120,11 +120,13 @@ void moveTest(time_t time1) {
     HardDisk hdd;
     hdd = moveProduct<HardDisk>(HardDisk(1123, time1, "Western Digital  Green 123 222TB  128MB SATA3 ", 12000));
 }
+
 template<typename T>
 T moveProduct(T product) {
     std::cout << "MoveProduct called" << std::endl;
     return product;
 }
+
 template<typename T>
 T copyProduct(T &product) {
     std::cout << "CopyProduct called" << std::endl;

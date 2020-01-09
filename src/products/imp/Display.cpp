@@ -34,19 +34,19 @@ char Display::getCharCode() const {
 
 void Display::printParams(std::ostream &ostream) const {
     Product::printParams(ostream);
-   ostream << ", " << "Inch Height: " << inchHeight;
+    ostream << ", " << "Inch Height: " << inchHeight;
     ostream << ", " << "Inch Width: " << inchWidth;
 }
 
 void Display::loadParamsFromStream(std::istream &istream) {
     Product::loadParamsFromStream(istream);
-   istream >> inchHeight;
-   istream >> inchWidth;
+    istream >> inchHeight;
+    istream >> inchWidth;
 }
 
 void Display::writeParamsToStream(std::ostream &ostream) const {
     Product::writeParamsToStream(ostream);
-   ostream <<' ' << inchWidth << ' ' << inchHeight;
+    ostream << ' ' << inchWidth << ' ' << inchHeight;
 }
 
 
@@ -60,7 +60,7 @@ bool Display::operator!=(const Display &rhs) const {
     return !(rhs == *this);
 }
 
-Display::Display(const Display &other) noexcept :Product(other){
+Display::Display(const Display &other) noexcept : Product(other) {
     std::cout << "Display Ctor" << std::endl;
     inchHeight = other.inchHeight;
     inchWidth = other.inchHeight;
@@ -74,7 +74,7 @@ Display &Display::operator=(const Display &other) noexcept {
     return *this;
 }
 
-Display::Display(Display &&other) noexcept :Product(std::forward<Product>(other)){
+Display::Display(Display &&other) noexcept : Product(std::forward<Product>(other)) {
     std::cout << "Display movetor" << std::endl;
     inchHeight = other.inchHeight;
     inchWidth = other.inchHeight;

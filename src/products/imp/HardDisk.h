@@ -8,20 +8,20 @@
 
 #include "../Product.h"
 
-class HardDisk : public Product{
+class HardDisk : public Product {
     int speedRPM;
 public:
     HardDisk();
 
     HardDisk(int initPrice, time_t dateOfAcq, const std::string &name, int speedRpm);
 
-    HardDisk(const HardDisk &other)noexcept;
+    HardDisk(const HardDisk &other) noexcept;
 
-    HardDisk &operator=(const HardDisk &other)noexcept;
+    HardDisk &operator=(const HardDisk &other) noexcept;
 
     HardDisk(HardDisk &&other) noexcept;
 
-    HardDisk &operator=(HardDisk &&other)noexcept;
+    HardDisk &operator=(HardDisk &&other) noexcept;
 
     int getCurrentPrice() const override;
 
@@ -29,7 +29,7 @@ public:
 
     char getCharCode() const override;
 
-     ~HardDisk() override;
+    ~HardDisk() override;
 
     bool operator==(const HardDisk &rhs) const;
 
@@ -41,8 +41,6 @@ protected:
     void loadParamsFromStream(std::istream &istream) override;
 
     void writeParamsToStream(std::ostream &ostream) const override;
-
-
 
 
 };

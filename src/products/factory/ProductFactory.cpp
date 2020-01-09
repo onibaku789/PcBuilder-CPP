@@ -4,37 +4,36 @@
 
 #include "ProductFactory.h"
 
-Product * ProductFactory::readAndCreateProduct(std::istream &istream) {
+Product *ProductFactory::readAndCreateProduct(std::istream &istream) {
     if (!istream.good())
         return nullptr;
     char typeCode;
     istream >> typeCode;
 
-    if(!istream.good()){
-        if( istream.eof()) return nullptr;
-
+    if (!istream.good()) {
+        if (istream.eof()) return nullptr;
         //TODO Throw Exception
         return nullptr;
     }
 
-    Product * product = CreateProduct(typeCode);
-    if (product == nullptr){
+    Product *product = CreateProduct(typeCode);
+    if (product == nullptr) {
         //TODO throw exception
     }
-    return  product;
+    return product;
 }
 
 ProductFactory::~ProductFactory() {
-
 }
-ProductFactory* ProductFactory::instance = nullptr;
+
+ProductFactory *ProductFactory::instance = nullptr;
 
 void ProductFactory::setProductFactory(ProductFactory *pf) {
     instance = pf;
 }
 
- ProductFactory *ProductFactory::getInstance() {
-    if(!instance){
+ProductFactory *ProductFactory::getInstance() {
+    if (!instance) {
         instance = new ProductFactory();
     }
     return instance;

@@ -64,24 +64,22 @@ void Product::writeParamsToStream(std::ostream &ostream) const {
 }
 
 void Product::loadParamsFromStream(std::istream &istream) {
-
     //TODO FISHY ASF
     istream >> name;
     istream >> initPrice;
     std::string buff;
     istream.width(9);
     istream >> buff;
-    if(buff.size() != 8 )
+    if (buff.size() != 8)
         throw std::range_error("Invalid time format.");
     tm tm{};
-    int year,month,day;
-    std::istringstream iss(buff.substr(0,4));
+    int year, month, day;
+    std::istringstream iss(buff.substr(0, 4));
     iss >> year;
-    std::istringstream iss2(buff.substr(4,2));
+    std::istringstream iss2(buff.substr(4, 2));
     iss2 >> month;
-    std::istringstream iss3(buff.substr(6,2));
+    std::istringstream iss3(buff.substr(6, 2));
     iss3 >> day;
-
 
     tm.tm_year = (year - 1900);
     tm.tm_mon = (month - 1);
@@ -103,7 +101,7 @@ std::istream &operator>>(std::istream &istream, Product &product) {
 }
 
 Product::~Product() {
-   // std::cout << "Destroying Product" << std::endl;
+    // std::cout << "Destroying Product" << std::endl;
 }
 
 bool Product::operator==(const Product &rhs) const {

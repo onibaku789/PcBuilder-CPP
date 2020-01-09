@@ -26,13 +26,12 @@ void HardDisk::loadParamsFromStream(std::istream &istream) {
 
 void HardDisk::writeParamsToStream(std::ostream &ostream) const {
     Product::writeParamsToStream(ostream);
-    ostream << ' ' << speedRPM ;
+    ostream << ' ' << speedRPM;
 }
 
 std::string HardDisk::getType() const { return "HardDisk"; }
 
 char HardDisk::getCharCode() const { return ProductTypes::HardDrive; }
-
 
 
 bool HardDisk::operator==(const HardDisk &rhs) const {
@@ -44,7 +43,7 @@ bool HardDisk::operator!=(const HardDisk &rhs) const {
     return !(rhs == *this);
 }
 
-HardDisk::HardDisk(const HardDisk &other)noexcept : Product(other)  {
+HardDisk::HardDisk(const HardDisk &other) noexcept : Product(other) {
     std::cout << "HardDisk ctor" << std::endl;
     speedRPM = other.speedRPM;
 
@@ -52,19 +51,19 @@ HardDisk::HardDisk(const HardDisk &other)noexcept : Product(other)  {
 
 HardDisk &HardDisk::operator=(const HardDisk &other) noexcept {
     std::cout << "HardDisk copy assign" << std::endl;
-    Product::operator= (other);
+    Product::operator=(other);
     speedRPM = other.speedRPM;
     return *this;
 }
 
-HardDisk::HardDisk(HardDisk &&other) noexcept :Product(std::forward<Product>(other)) {
+HardDisk::HardDisk(HardDisk &&other) noexcept : Product(std::forward<Product>(other)) {
     std::cout << "HardDisk movetor" << std::endl;
     speedRPM = other.speedRPM;
 }
 
 HardDisk &HardDisk::operator=(HardDisk &&other) noexcept {
     std::cout << "HardDisk move assign" << std::endl;
-    Product::operator= (std::forward<Product>(other));
+    Product::operator=(std::forward<Product>(other));
     speedRPM = other.speedRPM;
     return *this;
 }
@@ -73,7 +72,8 @@ HardDisk &HardDisk::operator=(HardDisk &&other) noexcept {
 HardDisk::HardDisk() {
     std::cout << "HardDisk NoArgs" << std::endl;
 }
+
 HardDisk::HardDisk(int initPrice, time_t dateOfAcq, const std::string &name, int speedRpm)
-:Product(initPrice,dateOfAcq, name),speedRPM(speedRpm) {
+        : Product(initPrice, dateOfAcq, name), speedRPM(speedRpm) {
     std::cout << "HardDisk AllArgs" << std::endl;
 }

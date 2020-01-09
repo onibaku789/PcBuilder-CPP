@@ -9,7 +9,7 @@
 #include <ostream>
 #include "../Product.h"
 
-class VideoCard : public Product{
+class VideoCard : public Product {
     int memory;
     int hz;
 public:
@@ -17,13 +17,13 @@ public:
 
     VideoCard(int initPrice, time_t dateOfAcq, const std::string &name, int memory, int hz);
 
-    VideoCard(const VideoCard &other) noexcept ;
+    VideoCard(const VideoCard &other) noexcept;
 
-    VideoCard &operator=(const VideoCard &other)noexcept;
+    VideoCard &operator=(const VideoCard &other) noexcept;
 
-    VideoCard(VideoCard &&other)noexcept;
+    VideoCard(VideoCard &&other) noexcept;
 
-    VideoCard &operator=(VideoCard &&other)noexcept;
+    VideoCard &operator=(VideoCard &&other) noexcept;
 
     virtual ~VideoCard();
 

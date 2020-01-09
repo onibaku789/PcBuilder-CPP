@@ -14,15 +14,21 @@ class ProductInventory {
 public:
 
     ProductInventory();
+
     virtual ~ProductInventory();
-    void readInventory(std::istream& istream);
-    void writeInventory(std::ostream& ostream)const;
-    void printProducts(std::ostream& ostream)const;
-    void addProduct(Product* product);
+
+    void readInventory(std::istream &istream);
+
+    void writeInventory(std::ostream &ostream) const;
+
+    void printProducts(std::ostream &ostream) const;
+
+    void addProduct(Product *product);
+
     int getProductsPrice() const;
 
 protected:
-    std::vector<Product*> products;
+    std::vector<Product *> products;
 };
 
 

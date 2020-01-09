@@ -9,15 +9,18 @@
 #include "../Product.h"
 
 class ProductFactory {
-    static ProductFactory * instance;
+    static ProductFactory *instance;
 
 public:
     virtual ~ProductFactory();
-    static ProductFactory * getInstance();
-    static void setProductFactory(ProductFactory * pf);
 
-    Product * readAndCreateProduct(std::istream& istream);
-    virtual Product * CreateProduct(char typeCode) const ;
+    static ProductFactory *getInstance();
+
+    static void setProductFactory(ProductFactory *pf);
+
+    Product *readAndCreateProduct(std::istream &istream);
+
+    virtual Product *CreateProduct(char typeCode) const;
 
 
 };

@@ -8,9 +8,9 @@
 
 #include "../ProductFactory.h"
 
-class ComputerProductFactory : public ProductFactory{
+class ComputerProductFactory : public ProductFactory {
 public:
-    Product * CreateProduct(char typeCode) const override ;
+    Product *CreateProduct(char typeCode) const override;
 };
 
 
