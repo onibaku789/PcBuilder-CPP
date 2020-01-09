@@ -47,14 +47,14 @@ int main() {
 
 
         //ProductInventory from code;
-      //  readInvFromCode(twokeighteen);
+        //readInvFromCode(twokeighteen);
 
 
         //ProductInventory from file;
         //readInvFromFileTest();
 
         //copytor and copyassign
-      // copyTest(currentTime);
+        //copyTest(currentTime);
 
         //movetor and moveassign
         //moveTest(currentTime);
