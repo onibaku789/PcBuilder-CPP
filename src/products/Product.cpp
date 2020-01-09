@@ -8,7 +8,7 @@
 
 #include <stdexcept>
 #include <cstring>
-#include <c++/4.8.3/sstream>
+#include <sstream>
 
 Product::Product() {
     //std::cout << "Product NoArgs" << std::endl;
@@ -57,7 +57,7 @@ void Product::printParams(std::ostream &ostream) const {
     ostream << ", " << "InitalPrice: " << initPrice
             << ", " << "DateOfAcquisiton: " << strDateOAcq
             << ", " << "Age: " << getAge()
-            << ", " << "Current price: " << getCurrentPrice() ;
+            << ", " << "Current price: " << getCurrentPrice();
 }
 
 void Product::writeParamsToStream(std::ostream &ostream) const {
@@ -87,15 +87,12 @@ void Product::loadParamsFromStream(std::istream &istream) {
     iss3 >> day;
 
 
-    tm.tm_year = year - 1900;
-    tm.tm_mon = month -1;
-    tm.tm_mday = day - 1;
+    tm.tm_year = (year - 1900);
+    tm.tm_mon = (month - 1);
+    tm.tm_mday = (day + 1);
     tm.tm_hour = tm.tm_min = tm.tm_sec = 0;
     tm.tm_isdst = -1;
     dateOfAcq = mktime(&tm);
-
-
-
 }
 
 std::ostream &operator<<(std::ostream &ostream, const Product &product) {

@@ -57,14 +57,14 @@ HardDisk &HardDisk::operator=(const HardDisk &other) noexcept {
     return *this;
 }
 
-HardDisk::HardDisk(HardDisk &&other) noexcept :Product(other) {
+HardDisk::HardDisk(HardDisk &&other) noexcept :Product(std::forward<Product>(other)) {
     std::cout << "HardDisk movetor" << std::endl;
     speedRPM = other.speedRPM;
 }
 
 HardDisk &HardDisk::operator=(HardDisk &&other) noexcept {
     std::cout << "HardDisk move assign" << std::endl;
-    Product::operator= (other);
+    Product::operator= (std::forward<Product>(other));
     speedRPM = other.speedRPM;
     return *this;
 }

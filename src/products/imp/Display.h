@@ -16,7 +16,6 @@ public:
 
     Display(int initPrice, time_t dateOfAcq, const std::string &name, int inchHeight, int inchWidth);
 
-
     ~Display() override;
 
     int getCurrentPrice() const override;

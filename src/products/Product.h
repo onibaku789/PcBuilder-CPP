@@ -63,12 +63,12 @@ public:
             dateOfAcq = other.dateOfAcq;
             name = other.name;
         }
-        std::cout << "\nProduct Assign copy operator" << std::endl;
+        std::cout << "Product Assign copy operator" << std::endl;
         return *this;
     }
 
     Product(Product &&other) noexcept: initPrice(0), dateOfAcq(0), name("")  {
-        std::cout << "\nProduct movetor" << std::endl;
+        std::cout << "Product movetor" << std::endl;
         initPrice = other.initPrice;
         dateOfAcq = other.dateOfAcq;
         name = other.name;
@@ -89,7 +89,7 @@ public:
             other.dateOfAcq = 0;
             other.name = "";
         }
-        std::cout << "\nProduct Assign move operator" << std::endl;
+        std::cout << "Product Assign move operator" << std::endl;
         return *this;
     }
 

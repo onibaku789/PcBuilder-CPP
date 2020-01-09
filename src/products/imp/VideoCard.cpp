@@ -69,18 +69,17 @@ VideoCard &VideoCard::operator=(const VideoCard &other) noexcept {
     return *this;
 }
 
-VideoCard::VideoCard(VideoCard &&other) noexcept : Product(other) {
+VideoCard::VideoCard(VideoCard &&other) noexcept : Product(std::forward<Product>(other)) {
     std::cout << "VideoCard movetor" << std::endl;
     memory = other.memory;
     hz = other.hz;
-
     other.memory = 0;
     other.hz = 0;
 }
 
 VideoCard &VideoCard::operator=(VideoCard &&other) noexcept {
     std::cout << "VideoCard move assign" << std::endl;
-    Product::operator=(other);
+    Product::operator=(std::forward<Product>(other));
     memory = other.memory;
     hz = other.hz;
 
