@@ -90,7 +90,7 @@ CompositeProduct & CompositeProduct::operator=(const CompositeProduct &other)noe
    return  *this;
 }
 
-CompositeProduct::CompositeProduct(CompositeProduct &&other)noexcept: Product(other) {
+CompositeProduct::CompositeProduct(CompositeProduct &&other)noexcept: Product(std::forward<Product>(other)) {
     std::cout << "CompositeProduct movetor" << std::endl;
     parts = other.parts;
     other.parts.clear();
@@ -98,7 +98,7 @@ CompositeProduct::CompositeProduct(CompositeProduct &&other)noexcept: Product(ot
 
 CompositeProduct & CompositeProduct::operator=(CompositeProduct &&other)noexcept {
     std::cout << "CompositeProduct assign move" << std::endl;
-    Product::operator=(other);
+    Product::operator=(std::forward<Product>(other));
     parts=other.parts;
     return  *this;
 }

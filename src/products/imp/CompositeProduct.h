@@ -29,7 +29,7 @@ public:
 
     CompositeProduct(CompositeProduct &&other)noexcept;
 
-     CompositeProduct &operator=(CompositeProduct &&other)noexcept;
+    CompositeProduct &operator=(CompositeProduct &&other)noexcept;
 
     ~CompositeProduct() override;
 void addPart(Product * product);

@@ -82,7 +82,6 @@ VideoCard &VideoCard::operator=(VideoCard &&other) noexcept {
     Product::operator=(std::forward<Product>(other));
     memory = other.memory;
     hz = other.hz;
-
     other.memory = 0;
     other.hz = 0;
     return *this;

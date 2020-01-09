@@ -54,16 +54,16 @@ public:
     bool operator!=(const Product &rhs) const;
 
     Product(const Product &other) : initPrice(other.initPrice), dateOfAcq(other.dateOfAcq), name(other.name) {
-        std::cout << "\nProduct Copytor" << std::endl;
+        std::cout << "Product Ctor" << std::endl;
     }
 
-     Product &operator=(const Product &other) noexcept{
+    virtual Product &operator=(const Product &other) noexcept{
         if (this != &other) {
             initPrice = other.initPrice;
             dateOfAcq = other.dateOfAcq;
             name = other.name;
         }
-        std::cout << "Product Assign copy operator" << std::endl;
+        std::cout << "Product copy assign" << std::endl;
         return *this;
     }
 
@@ -78,7 +78,7 @@ public:
         other.name = "";
     }
 
-     Product &operator=(Product &&other) noexcept {
+    virtual Product &operator=(Product &&other) noexcept {
         if (this != &other) {
 
             initPrice = other.initPrice;
@@ -89,7 +89,7 @@ public:
             other.dateOfAcq = 0;
             other.name = "";
         }
-        std::cout << "Product Assign move operator" << std::endl;
+        std::cout << "Product move assign" << std::endl;
         return *this;
     }
 

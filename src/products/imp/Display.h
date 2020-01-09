@@ -8,13 +8,21 @@
 
 #include "../Product.h"
 
-class Display : public Product{
+class Display : public Product {
     int inchHeight;
-   int inchWidth;
+    int inchWidth;
 public:
     Display();
 
     Display(int initPrice, time_t dateOfAcq, const std::string &name, int inchHeight, int inchWidth);
+
+    Display(const Display &other) noexcept;
+
+    Display &operator=(const Display &other) noexcept;
+
+    Display(Display &&other) noexcept;
+
+    Display &operator=(Display &&other) noexcept;
 
     ~Display() override;
 

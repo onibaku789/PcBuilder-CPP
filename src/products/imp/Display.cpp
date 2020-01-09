@@ -60,4 +60,38 @@ bool Display::operator!=(const Display &rhs) const {
     return !(rhs == *this);
 }
 
+Display::Display(const Display &other) noexcept :Product(other){
+    std::cout << "Display Ctor" << std::endl;
+    inchHeight = other.inchHeight;
+    inchWidth = other.inchHeight;
+}
+
+Display &Display::operator=(const Display &other) noexcept {
+    std::cout << "Display copy assign" << std::endl;
+    Product::operator=(other);
+    inchHeight = other.inchHeight;
+    inchWidth = other.inchHeight;
+    return *this;
+}
+
+Display::Display(Display &&other) noexcept :Product(std::forward<Product>(other)){
+    std::cout << "Display movetor" << std::endl;
+    inchHeight = other.inchHeight;
+    inchWidth = other.inchHeight;
+    other.inchHeight = 0;
+    other.inchWidth = 0;
+
+}
+
+Display &Display::operator=(Display &&other) noexcept {
+    std::cout << "Display move assign" << std::endl;
+    Product::operator=(std::forward<Product>(other));
+    inchHeight = other.inchHeight;
+    inchWidth = other.inchHeight;
+    other.inchHeight = 0;
+    other.inchWidth = 0;
+    return *this;
+}
+
+
 
