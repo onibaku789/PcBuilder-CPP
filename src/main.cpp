@@ -11,11 +11,11 @@
 #include "products/imp/VideoCard.h"
 
 void readInvFromFile(ProductInventory &inventory,
-                     const std::string &fileName = "C:\\Users\\Narancs\\CLionProjects\\pcbuilder\\default_IN.txt");
+                     const std::string &fileName = "../default_IN.txt");
 
 
 void writeInvToFile(ProductInventory &inventory,
-                    const std::string &fileName = "C:\\Users\\Narancs\\CLionProjects\\pcbuilder\\default_OUT.txt");
+                    const std::string &fileName = "../default_OUT.txt");
 
 template<typename T>
 T copyProduct(T &product);
