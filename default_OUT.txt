@@ -1,8 +1,8 @@
-Type: Display, Name: TFT1, InitalPrice: 30000, DateOfAcquisiton: 20111002, Age: 3020, Current price: 24000, Inch Height: 12, Inch Width: 13
-Type: Display, Name: TFT2, InitalPrice: 30000, DateOfAcquisiton: 20000122, Age: 7291, Current price: 24000, Inch Height: 30, Inch Width: 20
-Type: CompositeProduct, Name: ComputerConfig1, InitalPrice: 70000, DateOfAcquisiton: 20061001, Age: 4847, Current price: 55000
+Type: Display, Name: TFT1, InitalPrice: 30000 Ft., DateOfAcquisiton: 20111002, Age: 3020, Current price: 24000 Ft., Inch Height: 12, Inch Width: 13
+Type: Display, Name: TFT2, InitalPrice: 30000 Ft., DateOfAcquisiton: 20000122, Age: 7291, Current price: 24000 Ft., Inch Height: 30, Inch Width: 20
+Type: CompositeProduct, Name: ComputerConfig1, InitalPrice: 70000 Ft., DateOfAcquisiton: 20061001, Age: 4847, Current price: 55000 Ft.
  Items: 
- 1.: Type: Display, Name: TFT3, InitalPrice: 30000, DateOfAcquisiton: 20011002, Age: 6672, Current price: 24000, Inch Height: 12, Inch Width: 13
- 2.: Type: HardDisk, Name: WesternDigital, InitalPrice: 35000, DateOfAcquisiton: 20061001, Age: 4847, Current price: 28000, SpeedRMP: 700
- 3.: Type: VGA, Name: asd, InitalPrice: 3000, DateOfAcquisiton: 20201101, Age: -297, Current price: 3000, VideoMemory: 500, Hz: 10000
-Type: HardDisk, Name: maxtor, InitalPrice: 2500, DateOfAcquisiton: 20050301, Age: 5426, Current price: 2000, SpeedRMP: 7000
+ 1.: Type: Display, Name: TFT3, InitalPrice: 30000 Ft., DateOfAcquisiton: 20011002, Age: 6672, Current price: 24000 Ft., Inch Height: 12, Inch Width: 13
+ 2.: Type: HardDisk, Name: WesternDigital, InitalPrice: 35000 Ft., DateOfAcquisiton: 20061001, Age: 4847, Current price: 28000 Ft., SpeedRMP: 700
+ 3.: Type: VGA, Name: asd, InitalPrice: 3000 Ft., DateOfAcquisiton: 20201101, Age: -297, Current price: 3000 Ft., VideoMemory: 500, Hz: 10000
+Type: HardDisk, Name: maxtor, InitalPrice: 2500 Ft., DateOfAcquisiton: 20050301, Age: 5426, Current price: 2000 Ft., SpeedRMP: 7000

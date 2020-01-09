@@ -5,7 +5,6 @@
 #include "Product.h"
 
 #include <utility>
-
 #include <stdexcept>
 #include <cstring>
 #include <sstream>
@@ -14,8 +13,8 @@ Product::Product() {
     //std::cout << "Product NoArgs" << std::endl;
 }
 
-Product::Product(int initPrice, time_t dateOfAcq, std::string name) : initPrice(initPrice), dateOfAcq(dateOfAcq),
-                                                                      name(std::move(name)) {
+Product::Product(int initPrice, time_t dateOfAcq, std::string name) :
+        initPrice(initPrice), dateOfAcq(dateOfAcq), name(std::move(name)) {
     //std::cout << "Product AllArgs" <<std::endl;
 }
 
@@ -23,11 +22,9 @@ int Product::getInitPrice() const {
     return initPrice;
 }
 
-
 time_t Product::getDateOfAcq() const {
     return dateOfAcq;
 }
-
 
 const std::string &Product::getName() const {
     return name;
@@ -48,16 +45,15 @@ void Product::print(std::ostream &ostream) const {
     ostream << "Type: " << getType() << ", ";
     ostream << "Name: " << getName();
     printParams(ostream);
-
 }
 
 void Product::printParams(std::ostream &ostream) const {
     char strDateOAcq[9];
     strftime(strDateOAcq, 9, "%Y%m%d", gmtime(&dateOfAcq));
-    ostream << ", " << "InitalPrice: " << initPrice
+    ostream << ", " << "InitalPrice: " << initPrice << " Ft."
             << ", " << "DateOfAcquisiton: " << strDateOAcq
             << ", " << "Age: " << getAge()
-            << ", " << "Current price: " << getCurrentPrice();
+            << ", " << "Current price: " << getCurrentPrice() << " Ft.";
 }
 
 void Product::writeParamsToStream(std::ostream &ostream) const {

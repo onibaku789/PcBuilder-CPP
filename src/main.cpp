@@ -45,13 +45,11 @@ int main() {
         time_t currentTime;
         time(&currentTime);
 
-
         //ProductInventory from code;
         //readInvFromCode(twokeighteen);
 
-
         //ProductInventory from file;
-        //readInvFromFileTest();
+        readInvFromFileTest();
 
         //copytor and copyassign
         //copyTest(currentTime);
@@ -75,7 +73,6 @@ void readInvFromFile(ProductInventory &inventory, const std::string &fileName) {
     std::ifstream infile(fileName);
     if (!infile) {
         throw std::invalid_argument("Error opening input file");
-
     }
     inventory.readInventory(infile);
     std::cout << "Reading input file" << std::endl;
@@ -107,36 +104,27 @@ void readInvFromFileTest() {
 }
 
 void copyTest(time_t time1) {
-    auto hdd =  HardDisk(11700, time1, "Western Digital Caviar Blue 3.5 1TB 7200rpm 64MB SATA3 WD10EZEX",
-                         7200);
-    auto vga =  VideoCard(94000, time1, "GIGABYTE GeForce GTX 1660 Ti OC 6GB (GV-N166TOC-6GD) ", 6, 1800);
-
+    auto hdd = HardDisk(11700, time1, "Western Digital Caviar Blue 3.5 1TB 7200rpm 64MB SATA3 WD10EZEX", 7200);
+    auto vga = VideoCard(94000, time1, "GIGABYTE GeForce GTX 1660 Ti OC 6GB (GV-N166TOC-6GD) ", 6, 1800);
     auto vga1 = copyProduct<VideoCard>(vga);
+
     VideoCard vga2;
     vga2 = vga1;
 }
 
 void moveTest(time_t time1) {
-
     std::vector<HardDisk> hdds;
-    hdds.emplace_back(11700, time1, "Western Digital  Blue 3.5 1TB 7200rpm 64MB SATA3 ",
-                      7200);
-    hdds.emplace_back(117020, time1, "Western Digital  Green 4 2TB  128MB SATA3 ",
-                      12000);
-
-    hdds.insert(hdds.begin() + 1, HardDisk(1123, time1, "Western Digital  Green 123 222TB  128MB SATA3 ",
-                                           12000));
+    hdds.emplace_back(11700, time1, "Western Digital  Blue 3.5 1TB 7200rpm 64MB SATA3 ", 7200);
+    hdds.emplace_back(117020, time1, "Western Digital  Green 4 2TB  128MB SATA3 ", 12000);
+    hdds.insert(hdds.begin() + 1, HardDisk(1123, time1, "Western Digital  Green 123 222TB  128MB SATA3 ", 12000));
     HardDisk hdd;
-    hdd = moveProduct<HardDisk>(HardDisk(1123, time1, "Western Digital  Green 123 222TB  128MB SATA3 ",
-                                         12000));
+    hdd = moveProduct<HardDisk>(HardDisk(1123, time1, "Western Digital  Green 123 222TB  128MB SATA3 ", 12000));
 }
-
 template<typename T>
 T moveProduct(T product) {
     std::cout << "MoveProduct called" << std::endl;
     return product;
 }
-
 template<typename T>
 T copyProduct(T &product) {
     std::cout << "CopyProduct called" << std::endl;
