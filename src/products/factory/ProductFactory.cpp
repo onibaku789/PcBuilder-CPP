@@ -5,18 +5,18 @@
 #include "ProductFactory.h"
 
 Product *ProductFactory::readAndCreateProduct(std::istream &istream) {
-    if (istream.bad())
-       throw std::invalid_argument("Line must start with a character.");
+    if (istream.fail() || istream.eof())
+       throw std::invalid_argument("ProductFactory::readAndCreateProduct - Line must start with a character.");
     char typeCode;
     istream >> typeCode;
 
-    if (istream.bad() || istream.eof()) {
-        throw std::invalid_argument("Wrong file format.");
+    if (istream.fail() || istream.eof()) {
+        throw std::invalid_argument("ProductFactory::readAndCreateProduct - Wrong file format.");
     }
 
     Product *product = createProduct(typeCode);
     if (!product) {
-        throw std::invalid_argument("The product could not be created.");
+        throw std::invalid_argument("ProductFactory::readAndCreateProduct - The product could not be created.");
     }
     return product;
 }

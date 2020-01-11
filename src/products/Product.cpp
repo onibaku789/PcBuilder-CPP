@@ -65,6 +65,9 @@ void Product::writeParamsToStream(std::ostream &ostream) const {
 
 void Product::loadParamsFromStream(std::istream &istream) {
     //TODO FISHY ASF
+    if (istream.fail() || istream.eof()){
+        throw std::invalid_argument("Product::loadParamsFromStream - Invalid stream");
+    }
     istream >> name;
     istream >> initPrice;
     std::string buff;
