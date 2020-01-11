@@ -20,7 +20,7 @@ public:
 
     Product *readAndCreateProduct(std::istream &istream);
 
-    virtual Product *CreateProduct(char typeCode) const;
+    virtual Product *createProduct(char typeCode) const;
 
 
 };

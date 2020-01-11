@@ -8,7 +8,7 @@
 #include "../../imp/CompositeProduct.h"
 #include "../../imp/VideoCard.h"
 
-Product *ComputerProductFactory::CreateProduct(char typeCode) const {
+Product *ComputerProductFactory::createProduct(char typeCode) const {
     switch (typeCode) {
         case ProductTypes::HardDrive:
             return new HardDisk();

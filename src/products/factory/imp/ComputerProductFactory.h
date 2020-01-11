@@ -10,7 +10,7 @@
 
 class ComputerProductFactory : public ProductFactory {
 public:
-    Product *CreateProduct(char typeCode) const override;
+    Product *createProduct(char typeCode) const override;
 };
 
 

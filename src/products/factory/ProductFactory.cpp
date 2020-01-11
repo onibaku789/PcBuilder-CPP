@@ -5,20 +5,18 @@
 #include "ProductFactory.h"
 
 Product *ProductFactory::readAndCreateProduct(std::istream &istream) {
-    if (!istream.good())
-        return nullptr;
+    if (istream.bad())
+       throw std::invalid_argument("Line must start with a character.");
     char typeCode;
     istream >> typeCode;
 
-    if (!istream.good()) {
-        if (istream.eof()) return nullptr;
-        //TODO Throw Exception
-        return nullptr;
+    if (istream.bad() || istream.eof()) {
+        throw std::invalid_argument("Wrong file format.");
     }
 
-    Product *product = CreateProduct(typeCode);
-    if (product == nullptr) {
-        //TODO throw exception
+    Product *product = createProduct(typeCode);
+    if (!product) {
+        throw std::invalid_argument("The product could not be created.");
     }
     return product;
 }
@@ -39,7 +37,7 @@ ProductFactory *ProductFactory::getInstance() {
     return instance;
 }
 
-Product *ProductFactory::CreateProduct(char typeCode) const {
+Product *ProductFactory::createProduct(char typeCode) const {
     return nullptr;
 }
 

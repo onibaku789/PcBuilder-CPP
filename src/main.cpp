@@ -1,7 +1,7 @@
 
 #include <fstream>
 #include <cassert>
-#include <c++/4.8.3/stdexcept>
+#include <stdexcept>
 #include "products/factory/ProductFactory.h"
 #include "products/factory/imp/ComputerProductFactory.h"
 #include "products/ProductInventory.h"
@@ -46,16 +46,16 @@ int main() {
         time(&currentTime);
 
         //ProductInventory from code;
-        //readInvFromCode(twokeighteen);
+        readInvFromCode(twokeighteen);
 
         //ProductInventory from file;
-        //readInvFromFileTest();
+        readInvFromFileTest();
 
         //copytor and copyassign
-        //copyTest(currentTime);
+        copyTest(currentTime);
 
         //movetor and moveassign
-        //moveTest(currentTime);
+        moveTest(currentTime);
     }
     catch (const std::invalid_argument &exception) {
         std::cerr << "There was an error(invalid_argument): " << std::endl;
