@@ -12,7 +12,7 @@ VideoCard::~VideoCard() {
     std::cout << "Destroying VideoCard" << std::endl;
 }
 
-int VideoCard::getCurrentPrice() const {
+double VideoCard::getCurrentPrice() const {
     int ageInDays = getAge();
     return ageInDays < 30 ? initPrice : (int) initPrice * (ageInDays >= 30 && ageInDays < 90 ? 0.9 : 0.8);
 }

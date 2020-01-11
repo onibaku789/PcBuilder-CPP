@@ -26,7 +26,7 @@ public:
 
     ~Display() override;
 
-    int getCurrentPrice() const override;
+    double getCurrentPrice() const override;
 
     std::string getType() const override;
 

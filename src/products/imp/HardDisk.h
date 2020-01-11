@@ -23,7 +23,7 @@ public:
 
     HardDisk &operator=(HardDisk &&other) noexcept;
 
-    int getCurrentPrice() const override;
+    double getCurrentPrice() const override;
 
     std::string getType() const override;
 

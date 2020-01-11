@@ -54,7 +54,7 @@ void CompositeProduct::addPart(Product *product) {
 
 }
 
-int CompositeProduct::getCurrentPrice() const {
+double CompositeProduct::getCurrentPrice() const {
     return std::accumulate(parts.begin(), parts.end(), 0, [](int current_sum, const Product *product) {
         return current_sum + product->getCurrentPrice();
     });

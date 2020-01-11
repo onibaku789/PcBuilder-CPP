@@ -43,7 +43,7 @@ void ProductInventory::writeInventory(std::ostream &ostream) const {
 void ProductInventory::printProducts(std::ostream &ostream) const {
     std::cout << "Printing product inventory" << std::endl
               << "---------------------------------------------" << std::endl
-              << "Price of all products: " << getProductsPrice() << std::endl;
+              << "Price of all products: " << getProductsPrice() << " Ft." << std::endl;
 
     for (auto &item:products) {
         item->print(ostream);

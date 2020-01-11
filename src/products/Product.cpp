@@ -38,7 +38,7 @@ int Product::getAge() const {
     return (int) diffinsec / (3600 * 24);
 }
 
-int Product::getCurrentPrice() const {
+double Product::getCurrentPrice() const {
     return initPrice;
 }
 

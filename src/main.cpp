@@ -64,8 +64,9 @@ int main() {
     } catch (const std::out_of_range &exception) {
         std::cerr << "There was an error(out_of_range): " << std::endl;
         std::cerr << exception.what() << std::endl;
-    } catch (...) {
+    } catch (std::exception &e) {
         std::cerr << "Unexpected error occured." << std::endl;
+        std::cerr << e.what() << std::endl;
     }
     return 0;
 }

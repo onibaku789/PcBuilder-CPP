@@ -37,7 +37,7 @@ public:
 
     int getAge() const;
 
-    virtual int getCurrentPrice() const;
+    virtual double getCurrentPrice() const;
 
     void print(std::ostream &ostream) const;
 
