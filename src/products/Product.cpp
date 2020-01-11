@@ -33,8 +33,9 @@ const std::string &Product::getName() const {
 int Product::getAge() const {
     time_t currentTime;
     time(&currentTime);
-    double timeDiffinsec = difftime(currentTime, dateOfAcq);
-    return (int) timeDiffinsec / (3600 * 24);
+    double diffinsec = difftime(currentTime, dateOfAcq);
+    if (diffinsec < 0) throw std::invalid_argument("Age cannot be negative.");
+    return (int) diffinsec / (3600 * 24);
 }
 
 int Product::getCurrentPrice() const {
@@ -49,10 +50,11 @@ void Product::print(std::ostream &ostream) const {
 
 void Product::printParams(std::ostream &ostream) const {
     char strDateOAcq[9];
+    int age = getAge();
     strftime(strDateOAcq, 9, "%Y%m%d", gmtime(&dateOfAcq));
     ostream << ", " << "InitalPrice: " << initPrice << " Ft."
             << ", " << "DateOfAcquisiton: " << strDateOAcq
-            << ", " << "Age: " << getAge()
+            << ", " << "Age: " << age << (age > 1 ? " days" : " day")
             << ", " << "Current price: " << getCurrentPrice() << " Ft.";
 }
 
@@ -64,8 +66,7 @@ void Product::writeParamsToStream(std::ostream &ostream) const {
 }
 
 void Product::loadParamsFromStream(std::istream &istream) {
-    //TODO FISHY ASF
-    if (istream.fail() || istream.eof()){
+    if (istream.fail() || istream.eof()) {
         throw std::invalid_argument("Product::loadParamsFromStream - Invalid stream");
     }
     istream >> name;
@@ -79,16 +80,23 @@ void Product::loadParamsFromStream(std::istream &istream) {
     int year, month, day;
     std::istringstream iss(buff.substr(0, 4));
     iss >> year;
+    if (year < 0)
+        throw std::invalid_argument("Year cannot be negative");
     std::istringstream iss2(buff.substr(4, 2));
     iss2 >> month;
+    if (month > 12 && month < 0)
+        throw std::invalid_argument("Wrong month format.");
     std::istringstream iss3(buff.substr(6, 2));
     iss3 >> day;
+    if (day < 0 && day > 31)
+        throw std::invalid_argument("Wrong day format");
 
     tm.tm_year = (year - 1900);
     tm.tm_mon = (month - 1);
     tm.tm_mday = (day + 1);
     tm.tm_hour = tm.tm_min = tm.tm_sec = 0;
     tm.tm_isdst = -1;
+
     dateOfAcq = mktime(&tm);
 }
 

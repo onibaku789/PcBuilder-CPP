@@ -58,12 +58,12 @@ public:
     }
 
     virtual Product &operator=(const Product &other) noexcept {
+        std::cout << "Product copy assign" << std::endl;
         if (this != &other) {
             initPrice = other.initPrice;
             dateOfAcq = other.dateOfAcq;
             name = other.name;
         }
-        std::cout << "Product copy assign" << std::endl;
         return *this;
     }
 
@@ -79,8 +79,8 @@ public:
     }
 
     virtual Product &operator=(Product &&other) noexcept {
+        std::cout << "Product move assign" << std::endl;
         if (this != &other) {
-
             initPrice = other.initPrice;
             dateOfAcq = other.dateOfAcq;
             name = other.name;
@@ -89,11 +89,8 @@ public:
             other.dateOfAcq = 0;
             other.name = "";
         }
-        std::cout << "Product move assign" << std::endl;
         return *this;
     }
-
-
 };
 
 enum ProductTypes {

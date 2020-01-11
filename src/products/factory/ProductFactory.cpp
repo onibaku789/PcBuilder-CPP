@@ -2,7 +2,9 @@
 // Created by Narancs on 2020. 01. 05..
 //
 
+#include <stdexcept>
 #include "ProductFactory.h"
+
 
 Product *ProductFactory::readAndCreateProduct(std::istream &istream) {
     if (istream.fail() || istream.eof())

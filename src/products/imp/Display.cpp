@@ -46,7 +46,7 @@ void Display::loadParamsFromStream(std::istream &istream) {
 
 void Display::writeParamsToStream(std::ostream &ostream) const {
     Product::writeParamsToStream(ostream);
-    ostream << ' ' << inchWidth << ' ' << inchHeight;
+    ostream << ' ' << inchWidth << "inch" << ' ' << inchHeight << "inch";
 }
 
 

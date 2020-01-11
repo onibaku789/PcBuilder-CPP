@@ -27,7 +27,7 @@ char VideoCard::getCharCode() const {
 
 void VideoCard::printParams(std::ostream &ostream) const {
     Product::printParams(ostream);
-    ostream << ", " << "VideoMemory: " << memory << ", " << "Hz: " << hz;
+    ostream << ", " << "VideoMemory: " << memory << " GB" << ", " << "Hz: " << hz << " Mhz";
 }
 
 void VideoCard::loadParamsFromStream(std::istream &istream) {

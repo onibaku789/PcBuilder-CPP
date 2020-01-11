@@ -16,7 +16,7 @@ HardDisk::~HardDisk() {
 
 void HardDisk::printParams(std::ostream &ostream) const {
     Product::printParams(ostream);
-    ostream << ", " << "SpeedRMP: " << speedRPM;
+    ostream << ", " << "SpeedRMP: " << speedRPM << " RPM";
 }
 
 void HardDisk::loadParamsFromStream(std::istream &istream) {
