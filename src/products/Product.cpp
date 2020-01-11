@@ -52,8 +52,8 @@ void Product::printParams(std::ostream &ostream) const {
     char strDateOAcq[9];
     int age = getAge();
     strftime(strDateOAcq, 9, "%Y%m%d", gmtime(&dateOfAcq));
-    ostream << ", " << "InitalPrice: " << initPrice << " Ft."
-            << ", " << "DateOfAcquisiton: " << strDateOAcq
+    ostream << ", " << "InitialPrice: " << initPrice << " Ft."
+            << ", " << "DateOfAcquisition: " << strDateOAcq
             << ", " << "Age: " << age << (age > 1 ? " days" : " day")
             << ", " << "Current price: " << getCurrentPrice() << " Ft.";
 }

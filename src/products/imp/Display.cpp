@@ -34,8 +34,8 @@ char Display::getCharCode() const {
 
 void Display::printParams(std::ostream &ostream) const {
     Product::printParams(ostream);
-    ostream << ", " << "Inch Height: " << inchHeight;
-    ostream << ", " << "Inch Width: " << inchWidth;
+    ostream << ", " << "Inch Height: " << inchHeight << "inch";
+    ostream << ", " << "Inch Width: " << inchWidth << "inch";
 }
 
 void Display::loadParamsFromStream(std::istream &istream) {
@@ -46,7 +46,7 @@ void Display::loadParamsFromStream(std::istream &istream) {
 
 void Display::writeParamsToStream(std::ostream &ostream) const {
     Product::writeParamsToStream(ostream);
-    ostream << ' ' << inchWidth << "inch" << ' ' << inchHeight << "inch";
+    ostream << ' ' << inchWidth << ' ' << inchHeight;
 }
 
 
