@@ -32,29 +32,41 @@ void copyTest(time_t time1);
 
 void moveTest(time_t time1);
 
-void usage() {
-    std::cout << "Usage: ./a infile_name outfile_name" << std::endl;
-}
+void usage();
 
 int main(int argc, char *argv[]) {
     try {
         std::string inFileName = "../default_IN.txt", outFileName = "../default_OUT.txt";
-        if (argc > 3) {
-            usage();
-            return -1;
-        } else if (argc == 3) {
-            std::istringstream iss;
-            iss.str(argv[1]);
-            if (!(iss >> inFileName)) {
+        std::istringstream iss;
+        switch (argc) {
+            case 1:
+                break;
+            case 2:
+                iss.str(argv[1]);
+                if (!(iss >> inFileName)) {
+                    usage();
+                    throw std::invalid_argument("Main - Wrong input file name.");
+                }
+                break;
+            case 3:
+                iss.str(argv[1]);
+                if (!(iss >> inFileName)) {
+                    usage();
+                    throw std::invalid_argument("Main - Wrong input file name.");
+                }
+                iss.str(argv[2]);
+                if (!(iss >> outFileName)) {
+                    usage();
+                    throw std::invalid_argument("Main - Wrong output file name.");
+                }
+                break;
+            default:
                 usage();
-                throw std::invalid_argument("Main - Wrong input file name.");
-            }
-            iss.str(argv[2]);
-            if (!(iss >> outFileName)) {
-                usage();
-                throw std::invalid_argument("Main - Wrong output file name.");
-            }
+                return -1;
+
         }
+
+
         ProductFactory::setProductFactory(new ComputerProductFactory());
         tm tm;
         tm.tm_year = (2018 - 1900);
@@ -154,4 +166,10 @@ template<typename T>
 T copyProduct(T &product) {
     std::cout << "CopyProduct called" << std::endl;
     return product;
+}
+
+void usage() {
+    std::cout << "Usage: ./program" << std::endl;
+    std::cout << "Usage: ./program infile_name" << std::endl;
+    std::cout << "Usage: ./program infile_name outfile_name" << std::endl;
 }
