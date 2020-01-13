@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cassert>
 #include <stdexcept>
+#include <sstream>
 #include "products/factory/ProductFactory.h"
 #include "products/factory/imp/ComputerProductFactory.h"
 #include "products/ProductInventory.h"
@@ -25,14 +26,35 @@ T moveProduct(T product);
 
 void readInvFromCode(time_t time1);
 
-void readInvFromFileTest();
+void readInvFromFileTest(std::string inFileName, std::string outFileName);
 
 void copyTest(time_t time1);
 
 void moveTest(time_t time1);
 
-int main() {
+void usage() {
+    std::cout << "Usage: ./a infile_name outfile_name" << std::endl;
+}
+
+int main(int argc, char *argv[]) {
     try {
+        std::string inFileName = "../default_IN.txt", outFileName = "../default_OUT.txt";
+        if (argc > 3) {
+            usage();
+            return -1;
+        } else if (argc == 3) {
+            std::istringstream iss;
+            iss.str(argv[1]);
+            if (!(iss >> inFileName)) {
+                usage();
+                throw std::invalid_argument("Main - Wrong input file name.");
+            }
+            iss.str(argv[2]);
+            if (!(iss >> outFileName)) {
+                usage();
+                throw std::invalid_argument("Main - Wrong output file name.");
+            }
+        }
         ProductFactory::setProductFactory(new ComputerProductFactory());
         tm tm;
         tm.tm_year = (2018 - 1900);
@@ -49,13 +71,13 @@ int main() {
         readInvFromCode(twokeighteen);
 
         //ProductInventory from file;
-        readInvFromFileTest();
+        readInvFromFileTest(inFileName, outFileName);
 
         //copytor and copyassign
-        copyTest(currentTime);
+        //  copyTest(currentTime);
 
         //movetor and moveassign
-        moveTest(currentTime);
+        // moveTest(currentTime);
     }
     catch (const std::invalid_argument &exception) {
         std::cerr << "There was an error(invalid_argument): " << std::endl;
@@ -98,11 +120,11 @@ void readInvFromCode(time_t time1) {
     inv1.printProducts(std::cout);
 }
 
-void readInvFromFileTest() {
+void readInvFromFileTest(std::string inFileName, std::string outFileName) {
     ProductInventory inventory2;
-    readInvFromFile(inventory2);
+    readInvFromFile(inventory2, inFileName);
     inventory2.printProducts(std::cout);
-    writeInvToFile(inventory2);
+    writeInvToFile(inventory2, outFileName);
 }
 
 void copyTest(time_t time1) {

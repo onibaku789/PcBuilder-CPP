@@ -93,7 +93,7 @@ void Product::loadParamsFromStream(std::istream &istream) {
 
     tm.tm_year = (year - 1900);
     tm.tm_mon = (month - 1);
-    tm.tm_mday = (day + 1);
+    tm.tm_mday = day;
     tm.tm_hour = tm.tm_min = tm.tm_sec = 0;
     tm.tm_isdst = -1;
 

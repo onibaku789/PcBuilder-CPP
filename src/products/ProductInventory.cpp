@@ -35,8 +35,7 @@ void ProductInventory::readInventory(std::istream &istream) {
 
 void ProductInventory::writeInventory(std::ostream &ostream) const {
     for (auto &item:products) {
-        item->print(ostream);
-        ostream << std::endl;
+        ostream << *item << std::endl;
     }
 }
 

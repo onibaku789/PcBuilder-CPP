@@ -32,8 +32,8 @@ void CompositeProduct::loadParamsFromStream(std::istream &istream) {
 void CompositeProduct::writeParamsToStream(std::ostream &ostream) const {
     Product::writeParamsToStream(ostream);
     ostream << ' ' << parts.size();
-    for (auto i:parts) {
-        ostream << std::endl << i;
+    for (auto &i:parts) {
+        ostream << std::endl << *i;
     }
 }
 
