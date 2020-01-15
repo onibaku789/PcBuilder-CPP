@@ -84,11 +84,11 @@ void Product::loadParamsFromStream(std::istream &istream) {
         throw std::invalid_argument("Year cannot be negative");
     std::istringstream iss2(buff.substr(4, 2));
     iss2 >> month;
-    if (month > 12 && month < 0)
+    if (month > 12 || month < 0)
         throw std::invalid_argument("Wrong month format.");
     std::istringstream iss3(buff.substr(6, 2));
     iss3 >> day;
-    if (day < 0 && day > 31)
+    if (day < 0 || day > 31)
         throw std::invalid_argument("Wrong day format");
 
     tm.tm_year = (year - 1900);
