@@ -25,7 +25,7 @@ public:
 
     VideoCard &operator=(VideoCard &&other) noexcept;
 
-    virtual ~VideoCard();
+    ~VideoCard() override;
 
     double getCurrentPrice() const override;
 

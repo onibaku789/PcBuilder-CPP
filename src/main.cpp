@@ -38,32 +38,28 @@ int main(int argc, char *argv[]) {
     try {
         std::string inFileName = "../default_IN.txt", outFileName = "../default_OUT.txt";
         std::istringstream iss;
+        std::vector<std::string> args(argv + 1, argv + argc);
         switch (argc) {
             case 1:
                 break;
             case 2:
-                iss.str(argv[1]);
-                if (!(iss >> inFileName)) {
+                if (args.size() != 1) {
                     usage();
-                    throw std::invalid_argument("Main - Wrong input file name.");
+                    throw std::invalid_argument("Main - Not enough or too much argument.");
                 }
+                inFileName = args[0];
                 break;
             case 3:
-                iss.str(argv[1]);
-                if (!(iss >> inFileName)) {
+                if (args.size() != 2) {
                     usage();
-                    throw std::invalid_argument("Main - Wrong input file name.");
+                    throw std::invalid_argument("Main - Not enough or too much argument.");
                 }
-                iss.str(argv[2]);
-                if (!(iss >> outFileName)) {
-                    usage();
-                    throw std::invalid_argument("Main - Wrong output file name.");
-                }
+                inFileName = args[0];
+                outFileName = args[1];
                 break;
             default:
                 usage();
                 return -1;
-
         }
 
 
