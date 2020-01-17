@@ -57,15 +57,15 @@ public:
         std::cout << "Product Ctor" << std::endl;
     }
 
-    virtual Product &operator=(const Product &other) noexcept {
-        std::cout << "Product copy assign" << std::endl;
-        if (this != &other) {
-            initPrice = other.initPrice;
-            dateOfAcq = other.dateOfAcq;
-            name = other.name;
-        }
-        return *this;
-    }
+     Product &operator=(const Product &other) noexcept {
+         std::cout << "Product copy assign" << std::endl;
+         if (this != &other) {
+             initPrice = other.initPrice;
+             dateOfAcq = other.dateOfAcq;
+             name = other.name;
+         }
+         return *this;
+     }
 
     Product(Product &&other) noexcept: initPrice(0), dateOfAcq(0), name("") {
         std::cout << "Product movetor" << std::endl;
@@ -78,7 +78,7 @@ public:
         other.name = "";
     }
 
-    virtual Product &operator=(Product &&other) noexcept {
+    Product &operator=(Product &&other) noexcept {
         std::cout << "Product move assign" << std::endl;
         if (this != &other) {
             initPrice = other.initPrice;
