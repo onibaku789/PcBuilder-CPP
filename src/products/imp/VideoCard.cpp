@@ -14,7 +14,7 @@ VideoCard::~VideoCard() {
 
 double VideoCard::getCurrentPrice() const {
     int ageInDays = getAge();
-    return ageInDays < 30 ? initPrice : (int) initPrice * (ageInDays >= 30 && ageInDays < 90 ? 0.9 : 0.8);
+    return ageInDays < 30 ? initPrice : initPrice * (ageInDays >= 30 && ageInDays < 90 ? 0.9 : 0.8);
 }
 
 std::string VideoCard::getType() const {
@@ -64,8 +64,11 @@ VideoCard::VideoCard(const VideoCard &other) noexcept : Product(other) {
 VideoCard &VideoCard::operator=(const VideoCard &other) noexcept {
     std::cout << "VideoCard copy assign" << std::endl;
     Product::operator=(other);
-    memory = other.memory;
-    hz = other.hz;
+    if (this != &other) {
+        Product::operator=(other);
+        memory = other.memory;
+        hz = other.hz;
+    }
     return *this;
 }
 
@@ -80,10 +83,12 @@ VideoCard::VideoCard(VideoCard &&other) noexcept : Product(std::forward<Product>
 VideoCard &VideoCard::operator=(VideoCard &&other) noexcept {
     std::cout << "VideoCard move assign" << std::endl;
     Product::operator=(std::forward<Product>(other));
-    memory = other.memory;
-    hz = other.hz;
-    other.memory = 0;
-    other.hz = 0;
+    if (this != &other) {
+        memory = other.memory;
+        hz = other.hz;
+        other.memory = 0;
+        other.hz = 0;
+    }
     return *this;
 }
 

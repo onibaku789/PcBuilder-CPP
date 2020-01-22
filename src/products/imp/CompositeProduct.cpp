@@ -17,7 +17,7 @@ void CompositeProduct::printParams(std::ostream &ostream) const {
 
 void CompositeProduct::loadParamsFromStream(std::istream &istream) {
     Product::loadParamsFromStream(istream);
-    int itemCount;
+    int itemCount = 0;
     istream >> itemCount;
 
     for (int i = 0; i < itemCount; ++i) {

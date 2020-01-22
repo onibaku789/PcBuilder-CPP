@@ -6,7 +6,7 @@
 
 double HardDisk::getCurrentPrice() const {
     int ageInDays = getAge();
-    return ageInDays < 30 ? initPrice : (int) initPrice * (ageInDays >= 30 && ageInDays < 90 ? 0.9 : 0.8);
+    return ageInDays < 30 ? initPrice : initPrice * (ageInDays >= 30 && ageInDays < 90 ? 0.9 : 0.8);
 }
 
 HardDisk::~HardDisk() {
@@ -52,7 +52,9 @@ HardDisk::HardDisk(const HardDisk &other) noexcept : Product(other) {
 HardDisk &HardDisk::operator=(const HardDisk &other) noexcept {
     std::cout << "HardDisk copy assign" << std::endl;
     Product::operator=(other);
-    speedRPM = other.speedRPM;
+    if (this != &other) {
+        speedRPM = other.speedRPM;
+    }
     return *this;
 }
 
@@ -64,7 +66,9 @@ HardDisk::HardDisk(HardDisk &&other) noexcept : Product(std::forward<Product>(ot
 HardDisk &HardDisk::operator=(HardDisk &&other) noexcept {
     std::cout << "HardDisk move assign" << std::endl;
     Product::operator=(std::forward<Product>(other));
-    speedRPM = other.speedRPM;
+    if (this != &other) {
+        speedRPM = other.speedRPM;
+    }
     return *this;
 }
 

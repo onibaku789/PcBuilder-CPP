@@ -26,7 +26,7 @@ T moveProduct(T product);
 
 void readInvFromCode(time_t time1);
 
-void readInvFromFileTest(std::string inFileName, std::string outFileName);
+void readInvFromFileTest(const std::string &inFileName, const std::string &outFileName);
 
 void copyTest(time_t time1);
 
@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
         tm tm;
         tm.tm_year = (2018 - 1900);
         tm.tm_mon = (5 - 1);
-        tm.tm_mday = (10 + 1);
+        tm.tm_mday = 10;
         tm.tm_hour = tm.tm_min = tm.tm_sec = 0;
         tm.tm_isdst = -1;
         time_t twokeighteen = mktime(&tm);
@@ -82,10 +82,10 @@ int main(int argc, char *argv[]) {
         readInvFromFileTest(inFileName, outFileName);
 
         //copytor and copyassign
-        //  copyTest(currentTime);
+        copyTest(currentTime);
 
         //movetor and moveassign
-        // moveTest(currentTime);
+        moveTest(currentTime);
     }
     catch (const std::invalid_argument &exception) {
         std::cerr << "There was an error(invalid_argument): " << std::endl;
@@ -128,7 +128,7 @@ void readInvFromCode(time_t time1) {
     inv1.printProducts(std::cout);
 }
 
-void readInvFromFileTest(std::string inFileName, std::string outFileName) {
+void readInvFromFileTest(const std::string &inFileName, const std::string &outFileName) {
     ProductInventory inventory2;
     readInvFromFile(inventory2, inFileName);
     inventory2.printProducts(std::cout);
@@ -139,6 +139,7 @@ void copyTest(time_t time1) {
     auto hdd = HardDisk(11700, time1, "Western Digital Caviar Blue 3.5 1TB 7200rpm 64MB SATA3 WD10EZEX", 7200);
     auto vga = VideoCard(94000, time1, "GIGABYTE GeForce GTX 1660 Ti OC 6GB (GV-N166TOC-6GD) ", 6, 1800);
     auto vga1 = copyProduct<VideoCard>(vga);
+    getchar();
     VideoCard vga2;
     vga2 = vga1;
 }
@@ -148,8 +149,10 @@ void moveTest(time_t time1) {
     hdds.emplace_back(11700, time1, "Western Digital  Blue 3.5 1TB 7200rpm 64MB SATA3 ", 7200);
     hdds.emplace_back(117020, time1, "Western Digital  Green 4 2TB  128MB SATA3 ", 12000);
     hdds.insert(hdds.begin() + 1, HardDisk(1123, time1, "Western Digital  Green 123 222TB  128MB SATA3 ", 12000));
+
     HardDisk hdd;
     hdd = moveProduct<HardDisk>(HardDisk(1123, time1, "Western Digital  Green 123 222TB  128MB SATA3 ", 12000));
+    getchar();
 }
 
 template<typename T>

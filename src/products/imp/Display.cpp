@@ -6,7 +6,7 @@
 
 Display::Display() {
     std::cout << "Display NoArgs" << std::endl;
-};
+}
 
 Display::Display(int initPrice, time_t dateOfAcq, const std::string &name, int inchHeight, int inchWidth) : Product(
         initPrice, dateOfAcq, name), inchHeight(inchHeight), inchWidth(inchWidth) {
@@ -21,7 +21,7 @@ Display::~Display() {
 
 double Display::getCurrentPrice() const {
     int ageInDays = getAge();
-    return ageInDays < 30 ? initPrice : (int) initPrice * (ageInDays >= 30 && ageInDays < 90 ? 0.9 : 0.8);
+    return ageInDays < 30 ? initPrice : initPrice * (ageInDays >= 30 && ageInDays < 90 ? 0.9 : 0.8);
 }
 
 std::string Display::getType() const {
@@ -40,8 +40,7 @@ void Display::printParams(std::ostream &ostream) const {
 
 void Display::loadParamsFromStream(std::istream &istream) {
     Product::loadParamsFromStream(istream);
-    istream >> inchHeight;
-    istream >> inchWidth;
+    istream >> inchHeight >> inchWidth;
 }
 
 void Display::writeParamsToStream(std::ostream &ostream) const {
@@ -69,8 +68,10 @@ Display::Display(const Display &other) noexcept : Product(other) {
 Display &Display::operator=(const Display &other) noexcept {
     std::cout << "Display copy assign" << std::endl;
     Product::operator=(other);
-    inchHeight = other.inchHeight;
-    inchWidth = other.inchHeight;
+    if (this != &other) {
+        inchHeight = other.inchHeight;
+        inchWidth = other.inchHeight;
+    }
     return *this;
 }
 
@@ -86,10 +87,12 @@ Display::Display(Display &&other) noexcept : Product(std::forward<Product>(other
 Display &Display::operator=(Display &&other) noexcept {
     std::cout << "Display move assign" << std::endl;
     Product::operator=(std::forward<Product>(other));
-    inchHeight = other.inchHeight;
-    inchWidth = other.inchHeight;
-    other.inchHeight = 0;
-    other.inchWidth = 0;
+    if (this != &other) {
+        inchHeight = other.inchHeight;
+        inchWidth = other.inchHeight;
+        other.inchHeight = 0;
+        other.inchWidth = 0;
+    }
     return *this;
 }
 

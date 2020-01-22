@@ -21,5 +21,4 @@ Product *ComputerProductFactory::createProduct(char typeCode) const {
         default:
             return nullptr;
     }
-
 }

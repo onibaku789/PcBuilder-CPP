@@ -9,7 +9,7 @@
 Product *ProductFactory::readAndCreateProduct(std::istream &istream) {
     if (istream.fail() || istream.eof())
        throw std::invalid_argument("ProductFactory::readAndCreateProduct - Line must start with a character.");
-    char typeCode;
+    char typeCode = '0';
     istream >> typeCode;
 
     if (istream.fail() || istream.eof()) {
@@ -24,6 +24,8 @@ Product *ProductFactory::readAndCreateProduct(std::istream &istream) {
 }
 
 ProductFactory::~ProductFactory() {
+    std::cout << "\n\n\n\nDestroying ProductFactory\n\n\n\n" << instance << std::endl;
+    delete ProductFactory::instance;
 }
 
 ProductFactory *ProductFactory::instance = nullptr;
